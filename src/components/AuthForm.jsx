@@ -98,12 +98,14 @@ function AuthForm({ mode, onSubmit }) {
           {mode === 'login' ? '로그인' : '회원가입'}
         </Button>
       </Form>
-      {mode !== 'signup' && (
-        <div>
-          <p>
-            계정이 없으신가요? <Link to='/signup'>회원가입</Link>
-          </p>
-        </div>
+      {mode === 'login' ? (
+        <p>
+          계정이 없으신가요? <Link to='/signup'>회원가입</Link>
+        </p>
+      ) : (
+        <p>
+          이미 계정이 있으신가요? <Link to='/login'>로그인</Link>
+        </p>
       )}
     </LoginJoinBox>
   );

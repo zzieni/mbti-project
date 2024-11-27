@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const UserContext = createContext(null);
 
@@ -19,6 +20,7 @@ export default function UserProvider({ children }) {
   };
 
   const logout = () => {
+    toast.success('로그아웃 되었습니다');
     setUser(null);
     localStorage.removeItem('user');
   };

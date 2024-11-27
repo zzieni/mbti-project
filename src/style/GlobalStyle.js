@@ -10,7 +10,20 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     flex-wrap: wrap;
     padding: 0;
-
+    flex-direction: column;
   }
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+
+p {
+padding : 30px;
+}
+
 
 `;

@@ -1,10 +1,13 @@
 import { useContext, useState } from 'react';
 import { updateProfile } from '../api/auth';
 import { UserContext } from '../context/UserProvider';
+import { toast } from 'react-toastify';
 
 function Profile() {
   const { user, setUser } = useContext(UserContext);
+
   const [nickname, setNickname] = useState(user?.nickname || '');
+  console.log(nickname);
 
   console.log('ProfileData', user);
 
@@ -21,11 +24,12 @@ function Profile() {
       console.log(data);
       if (data.success) {
         setUser({ ...user, nickname, avatar: data.avatar });
-        alert('닉네임이 수정되었습니다.');
+        toast.success('닉네임이 수정되었습니다.');
       }
     } catch (error) {
+      console.log(user);
       console.error('Signup error:', error);
-      alert('프로필 수정에 실패 하였습니다.');
+      toast.warning('프로필 수정에 실패 하였습니다.');
     }
   };
 

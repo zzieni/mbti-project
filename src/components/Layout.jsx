@@ -7,6 +7,7 @@ const LayoutContainer = styled.header`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 `;
 
 const Navbar = styled.nav`
@@ -42,7 +43,10 @@ function Layout() {
             </Link>
             <Link to={'/test'}>
               <button>테스트</button>
-            </Link>{' '}
+            </Link>
+            <Link to={'/results'}>
+              <button>테스트 결과</button>
+            </Link>
             <Link to={'/'}>
               <button onClick={logout}>로그아웃</button>
             </Link>

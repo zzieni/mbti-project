@@ -12,10 +12,10 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route element={<ProtectedRoute />}>
-          <Route element={<Layout />}>
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route element={<ProtectedRoute />}>
             <Route path='/login' element={<Login />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/test' element={<MbtiTestPage />} />
