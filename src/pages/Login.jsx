@@ -1,7 +1,6 @@
-// import { useEffect } from 'react';
 import AuthForm from '../components/AuthForm';
-import { login, getUserProfile } from '../api/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../api/auth';
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserProvider';
 import styled from 'styled-components';
