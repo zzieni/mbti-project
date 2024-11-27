@@ -1,18 +1,16 @@
 import AuthForm from '../components/AuthForm';
 import { register } from '../api/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 function Signup() {
   const navigate = useNavigate();
 
-  // 완성된 로직들이 아니에요! 참고만 하세요!
   const handleSignup = async (formData) => {
     try {
-      const data = await register(formData);
-      console.log('siginupData', data);
-      toast.success('회원가입을 완료 하습니다.');
-      navigate('/login');
+      await register(formData); // api/auth 회원가입 api가 살행된다.
+      toast.success('회원가입을 완료 하습니다.'); // 회원가입 완료 시 토스트 알럿 알림
+      navigate('/login'); // 회원가입이 완료되면 로그인 창으로 이동
     } catch (error) {
       console.error('Signup error:', error);
       const errorMessage = `${error.response?.data?.message}`;

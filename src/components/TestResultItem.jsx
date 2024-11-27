@@ -1,7 +1,6 @@
 import {
   deleteTestResult,
   getTestResults,
-  //   getTestResults,
   updateTestResultVisibility,
 } from '../api/testResults';
 import { mbtiDescriptions } from '../utils/mbtiCalculator';
@@ -11,11 +10,14 @@ import { toast } from 'react-toastify';
 
 function TestResultItem({ result, testResults, setTestResults }) {
   const { user } = useContext(UserContext);
+
+  // 현재 로그인한 userID
   const isOwner = user.userId;
 
+  // 테스트 결과 삭제 함수
   const handleDelete = async (id) => {
     try {
-      await deleteTestResult(id);
+      await deleteTestResult(id); // 테스트 결과 삭제 api 호출
       setTestResults(testResults.filter((result) => result.id !== id));
       toast.success('삭제되었습니다.');
     } catch (error) {
@@ -23,15 +25,15 @@ function TestResultItem({ result, testResults, setTestResults }) {
     }
   };
 
+  // 비공개 - 공개 전환 처리 함수
   const handlePrivate = async (id, visibility) => {
     try {
       const newVisibility = !visibility;
-      console.log(newVisibility);
 
-      const resultPrivate = await updateTestResultVisibility(id, {
+      // 테스트 결과 목록 활성화/비활설화 변경 api 호출
+      await updateTestResultVisibility(id, {
         visibility: newVisibility,
       });
-      console.log(resultPrivate);
 
       setTestResults(
         testResults.map((result) =>
@@ -39,35 +41,10 @@ function TestResultItem({ result, testResults, setTestResults }) {
         )
       );
       await getTestResults();
-      toast.success('비공개로 처리되었습니다.');
     } catch (error) {
       console.error('테스트 결과 삭제 오류:', error);
     }
   };
-
-  // const handleDelete = async (id) => {
-  //   try {
-  //     await deleteTestResult(id);
-  //     setTestResults(testResults.filter((result) => result.id !== id));
-  //   } catch (error) {
-  //     console.error('테스트 결과 삭제 오류:', error);
-  //   }
-  // };
-
-  // const handlePrivate = async (id) => {
-  //   try {
-  //     const visibility = { visibility: false };
-  //     const resultPrivate = await updateTestResultVisibility(id, visibility);
-  //     console.log(resultPrivate);
-  //     setTestResults(
-  //       testResults.map((result) =>
-  //         result.id === id ? { ...result, visibility: false } : result
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.error('테스트 결과 삭제 오류:', error);
-  //   }
-  // };
 
   return (
     <>

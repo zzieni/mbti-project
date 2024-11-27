@@ -15,13 +15,11 @@ function Login() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  console.log(setUser);
   const handleLogin = async (formData) => {
     try {
-      const data = await login(formData);
-      console.log('LoginData', data);
-      setUser(data);
-      toast.success(`${data.nickname}님 환영합니다.`);
+      const data = await login(formData); // api/auth 로그인 api가 살행된다.
+      setUser(data); // 전역 user 상태에 추가된다
+      toast.success(`${data.nickname}님 환영합니다.`); // 로그인 성공 시 토스트 알럿 알림
       navigate('/');
     } catch (error) {
       console.log(error);

@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 
 function MbtiTestPage() {
   const { user } = useContext(UserContext);
-  console.log('MbtiTestPage-User,', user);
 
   const navigate = useNavigate();
 
@@ -20,14 +19,10 @@ function MbtiTestPage() {
     userId: '',
     visibility: true,
   });
-  console.log('MbtiTestPage-ResultData', resultData);
 
   const [result, setResult] = useState();
-  console.log('MbtiTestPage-result', result);
 
   const handleTestSubmit = async (answers) => {
-    // answers 는 체크한 질문들 20개
-    console.log('MbtiTestPage-answers', answers);
     try {
       const mbtiResult = calculateMBTI(answers);
       const currentDate = new Date().toISOString();
@@ -41,8 +36,7 @@ function MbtiTestPage() {
       };
 
       setResultData(newResultData);
-      const data = await createTestResult(newResultData);
-      console.log('MbtiTestPageData', data);
+      await createTestResult(newResultData);
       setResult(mbtiResult);
       toast.success('MBTI 테스트 제출');
     } catch (error) {
