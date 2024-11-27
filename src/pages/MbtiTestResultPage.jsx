@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   deleteTestResult,
   getTestResults,
   updateTestResultVisibility,
 } from '../api/testResults';
 import { mbtiDescriptions } from '../utils/mbtiCalculator';
+import { UserContext } from '../context/UserProvider';
 
 function MbtiTestResultPage() {
+  const { user } = useContext(UserContext);
   const [testResults, setTestResults] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  console.log('MbtiTestResultPage-testResults', testResults);
+  const isOwner = user.userId;
 
   useEffect(() => {
     fetchTestResults();
@@ -69,10 +70,14 @@ function MbtiTestResultPage() {
                 {mbtiDescriptions[result.result] ||
                   '해당 성격 유형에 대한 설명이 없습니다.'}
               </p>
-              <button onClick={() => handleDelete(result.id)}>삭제</button>
-              <button onClick={() => handlePrivate(result.id)}>
-                비공개로 전환
-              </button>
+              {isOwner === result.userId && (
+                <>
+                  <button onClick={() => handleDelete(result.id)}>삭제</button>
+                  <button onClick={() => handlePrivate(result.id)}>
+                    비공개로 전환
+                  </button>
+                </>
+              )}
             </li>
           ))}
         </ul>
