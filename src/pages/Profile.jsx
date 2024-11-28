@@ -71,10 +71,12 @@ function Profile() {
     setNickname(e.target.value);
   };
 
+  // 닉네임 변경 기능 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // 프로필 변경 api 호출
       const data = await updateProfile({ nickname }, user.accessToken);
 
       if (data.success) {

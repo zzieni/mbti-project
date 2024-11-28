@@ -45,9 +45,12 @@ function MbtiTestResultPage() {
     fetchTestResults();
   }, []);
 
+  // 태스트 결과 가져오기 함수
   const fetchTestResults = async () => {
     try {
       setLoading(true);
+
+      // 테스트 결과 목록 api 호출
       const results = await getTestResults();
       setTestResults(results);
     } catch (err) {
@@ -58,6 +61,7 @@ function MbtiTestResultPage() {
     }
   };
 
+  //  에레와 로딩의 상태 값에 따라 테스트결과 목록이 렌더링 되기전 사용자에게 보여준다.
   if (loading) return <LoadingMessage>로딩 중...</LoadingMessage>;
   if (error) return <ErrorMessage>{error}</ErrorMessage>;
 

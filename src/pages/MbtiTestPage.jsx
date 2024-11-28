@@ -59,6 +59,7 @@ const Button = styled.button`
 function MbtiTestPage() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+
   const [resultData, setResultData] = useState({
     date: '',
     id: '',
@@ -69,11 +70,15 @@ function MbtiTestPage() {
   });
   const [result, setResult] = useState();
 
+  // 테스트 제출 버튼 실행 함수
   const handleTestSubmit = async (answers) => {
     try {
       const mbtiResult = calculateMBTI(answers);
+
+      // 테스트 제출 일자 생성
       const currentDate = new Date().toISOString();
 
+      // 로그인한 유저정보와 테스트 결과를 하나의 객체에 담아 준다
       const newResultData = {
         date: currentDate,
         nickname: user.nickname,
@@ -83,6 +88,8 @@ function MbtiTestPage() {
       };
 
       setResultData(newResultData);
+
+      // 테스트 결과 생성 api 호출
       await createTestResult(newResultData);
       setResult(mbtiResult);
       toast.success('MBTI 테스트 제출');

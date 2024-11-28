@@ -93,8 +93,10 @@ function TestResultItem({ result, testResults, setTestResults }) {
   const { user } = useContext(UserContext);
   const isOwner = user.userId === result.userId;
 
+  // 테스트 결과 삭제 함수
   const handleDelete = async (id) => {
     try {
+      // 테스트 결과 삭제 api 호출
       await deleteTestResult(id);
       setTestResults(testResults.filter((result) => result.id !== id));
       toast.success('삭제되었습니다.');
@@ -104,15 +106,21 @@ function TestResultItem({ result, testResults, setTestResults }) {
     }
   };
 
+  // 테스트 결과 활설화 / 비활성화 함수
   const handlePrivate = async (id, visibility) => {
     try {
+      // 현재 visibility에 대해 반대가 될수 있도록함
       const newVisibility = !visibility;
+
+      // 테스트 결과 목록 활성화/비활설화 변경 api 호출
       await updateTestResultVisibility(id, { visibility: newVisibility });
       setTestResults(
         testResults.map((result) =>
           result.id === id ? { ...result, visibility: newVisibility } : result
         )
       );
+
+      // 테스트 결과 목록 api 호출
       await getTestResults();
       toast.success(
         newVisibility ? '공개로 전환되었습니다.' : '비공개로 전환되었습니다.'
