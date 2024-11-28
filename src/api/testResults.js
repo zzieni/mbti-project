@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/testResults';
+const API_URL = 'https://honeysuckle-walnut-file.glitch.me/testResults';
 
 // 테스트 결과 목록 api
 export const getTestResults = async () => {
