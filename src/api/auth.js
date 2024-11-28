@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
 
 const API_URL = 'https://moneyfulpublicpolicy.co.kr';
 
@@ -6,34 +6,25 @@ const API_URL = 'https://moneyfulpublicpolicy.co.kr';
 
 // 회원가입 api
 export const register = async (userData) => {
-  const response = await axios.post(`${API_URL}/register`, userData);
+  const response = await axiosInstance.post(`/register`, userData);
   return response.data;
 };
 
 // 로그인 api
 export const login = async (userData) => {
-  const response = await axios.post(`${API_URL}/login`, userData); // [,config] -> 선택 값
+  const response = await axiosInstance.post(`login`, userData); // [,config] -> 선택 값
   return response.data;
 };
 
 // 회원정보 확인 api
-export const getUserProfile = async (token) => {
+export const getUserProfile = async () => {
   // get: haderd에 담아서 요청 보내기
-  const response = await axios.get(`${API_URL}/user`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axiosInstance.get(`/user`);
   return response.data;
 };
 
 // 프로필 변경 api
-export const updateProfile = async (formData, token) => {
-  const response = await axios.patch(`${API_URL}/profile`, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const updateProfile = async (formData) => {
+  const response = await axiosInstance.patch(`${API_URL}/profile`, formData);
   return response.data;
 };

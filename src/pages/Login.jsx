@@ -4,6 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserProvider';
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
+
+const LoginSinginupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 function Login() {
   const { setUser } = useContext(UserContext);
@@ -12,7 +19,7 @@ function Login() {
   const handleLogin = async (formData) => {
     try {
       const data = await login(formData); // api/auth 로그인 api가 살행된다.
-      setUser(data); // 전역 user 상태에 추가된다
+      setUser({ ...data, accessToken: data.accessToken }); // 전역 user 상태에 추가된다
       toast.success(`${data.nickname}님 환영합니다.`); // 로그인 성공 시 토스트 알럿 알림
       navigate('/');
     } catch (error) {
@@ -22,12 +29,12 @@ function Login() {
   };
 
   return (
-    <loginSinginupContainer>
+    <LoginSinginupContainer>
       <div>
         <h1>로그인</h1>
         <AuthForm mode='login' onSubmit={handleLogin} />
       </div>
-    </loginSinginupContainer>
+    </LoginSinginupContainer>
   );
 }
 

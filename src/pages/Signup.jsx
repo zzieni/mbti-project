@@ -2,6 +2,13 @@ import AuthForm from '../components/AuthForm';
 import { register } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
+
+const LoginSinginupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 function Signup() {
   const navigate = useNavigate();
@@ -19,12 +26,12 @@ function Signup() {
   };
 
   return (
-    <loginSinginupContainer>
+    <LoginSinginupContainer>
       <div>
         <h1>회원가입</h1>
         <AuthForm mode='signup' onSubmit={handleSignup} />
       </div>
-    </loginSinginupContainer>
+    </LoginSinginupContainer>
   );
 }
 
