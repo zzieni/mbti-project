@@ -1,9 +1,37 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# mbti-project
+## 프로젝트 구조
+📦src
+ ┣ 📂api
+ ┃ ┣ 📜auth.js
+ ┃ ┗ 📜testResults.js
+ ┣ 📂components
+ ┃ ┣ 📜AuthForm.jsx
+ ┃ ┣ 📜Layout.jsx
+ ┃ ┣ 📜TestFrom.jsx
+ ┃ ┣ 📜TestResultItem.jsx
+ ┃ ┗ 📜TestResultList.jsx
+ ┣ 📂context
+ ┃ ┗ 📜UserProvider.jsx
+ ┣ 📂data
+ ┃ ┗ 📜questions.js
+ ┣ 📂pages
+ ┃ ┣ 📜Home.jsx
+ ┃ ┣ 📜Login.jsx
+ ┃ ┣ 📜MbtiTestPage.jsx
+ ┃ ┣ 📜MbtiTestResultPage.jsx
+ ┃ ┣ 📜Profile.jsx
+ ┃ ┗ 📜Signup.jsx
+ ┣ 📂shared
+ ┃ ┣ 📜ProtectedRoute.jsx
+ ┃ ┗ 📜Router.jsx
+ ┣ 📂style
+ ┃ ┗ 📜GlobalStyle.js
+ ┣ 📂utils
+ ┃ ┗ 📜mbtiCalculator.js
+ ┣ 📜.DS_Store
+ ┣ 📜App.css
+ ┣ 📜App.jsx
+ ┣ 📜index.css
+ ┗ 📜main.jsx
