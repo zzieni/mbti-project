@@ -1,5 +1,58 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import { questions } from '../data/questions';
+
+const FormContainer = styled.form`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+const QuestionContainer = styled.div`
+  margin-bottom: 2rem;
+  background-color: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const QuestionText = styled.p`
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+`;
+
+const OptionsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const OptionLabel = styled.label`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+`;
+
+const RadioInput = styled.input`
+  margin-right: 0.5rem;
+`;
+
+const SubmitButton = styled.button`
+  background-color: #4299e1;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #3182ce;
+  }
+`;
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
@@ -19,41 +72,28 @@ const TestForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='space-y-6 p-6 bg-white rounded-lg'>
+    <FormContainer onSubmit={handleSubmit}>
       {questions.map((q, index) => (
-        <div key={q.id} className='mb-6'>
-          <p className='font-semibold text-lg mb-3'>{q.question}</p>
-          <div className='space-y-2'>
+        <QuestionContainer key={q.id}>
+          <QuestionText>{q.question}</QuestionText>
+          <OptionsContainer>
             {q.options.map((option, i) => (
-              <label
-                key={i}
-                className={`block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
-                  answers[index]?.answer === q.type.split('/')[i]
-                    ? 'bg-gray-100'
-                    : ''
-                } hover:bg-gray-100`}
-              >
-                <input
+              <OptionLabel key={i}>
+                <RadioInput
                   type='radio'
                   name={`question-${index}`}
                   value={q.type.split('/')[i]}
                   checked={answers[index]?.answer === q.type.split('/')[i]}
                   onChange={() => handleChange(index, q.type.split('/')[i])}
-                  className='mr-2 text-primary-color'
                 />
                 {option}
-              </label>
+              </OptionLabel>
             ))}
-          </div>
-        </div>
+          </OptionsContainer>
+        </QuestionContainer>
       ))}
-      <button
-        type='submit'
-        className='w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]'
-      >
-        제출하기
-      </button>
-    </form>
+      <SubmitButton type='submit'>제출하기</SubmitButton>
+    </FormContainer>
   );
 };
 

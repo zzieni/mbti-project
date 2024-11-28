@@ -26,4 +26,18 @@ padding : 30px;
 }
 
 
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
 `;

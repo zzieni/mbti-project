@@ -30,25 +30,25 @@ function Layout() {
     <LayoutContainer>
       <Navbar>
         <Link to={'/'}>
-          <button>홈</button>
+          <p>홈</p>
         </Link>
         {!isLogin ? (
           <Link to={'/login'}>
-            <button>로그인</button>
+            <p>로그인</p>
           </Link>
         ) : (
           <>
             <Link to={'/profile'}>
-              <button>프로필</button>
+              <p>프로필</p>
             </Link>
             <Link to={'/test'}>
-              <button>테스트</button>
+              <p>테스트</p>
             </Link>
             <Link to={'/results'}>
-              <button>테스트 결과</button>
+              <p>테스트 결과</p>
             </Link>
             <Link to={'/'}>
-              <button onClick={logout}>로그아웃</button>
+              <p onClick={logout}>로그아웃</p>
             </Link>
           </>
         )}
