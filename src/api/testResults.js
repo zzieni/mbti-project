@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://honeysuckle-walnut-file.glitch.me/testResults';
+const API_URL = `${import.meta.env.VITE_BASE_URL}/testResults`;
 
 // 테스트 결과 목록 api
 export const getTestResults = async () => {
