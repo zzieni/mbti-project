@@ -1,5 +1,7 @@
 # MBTI 프로젝트
 이 프로젝트는 MBTI(Myers-Briggs Type Indicator) 성격 유형 테스트를 구현한 웹 애플리케이션입니다.
+<img width="1464" alt="스크린샷 2024-11-28 오전 11 43 35" src="https://github.com/user-attachments/assets/6fae0409-3c31-4db9-8140-4348dcc30933">
+
 
 ## 기술 스택
 -	Frontend: React
