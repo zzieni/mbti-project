@@ -2,11 +2,11 @@
 이 프로젝트는 MBTI(Myers-Briggs Type Indicator) 성격 유형 테스트를 구현한 웹 애플리케이션입니다.
 
 ## 기술 스택
-•	Frontend: React
-•	상태 관리: Context API
-•	스타일링: styled-components
-•	라우팅: react-router-dom
-•	알림: react-toastify
+-	Frontend: React
+-	상태 관리: Context API
+-	스타일링: styled-components
+-	라우팅: react-router-dom
+-	알림: react-toastify
 
 ## 프로젝트 구조
 - `/src`: 소스 코드	
