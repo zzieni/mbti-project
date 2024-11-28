@@ -19,12 +19,12 @@ function Signup() {
   };
 
   return (
-    <div>
+    <loginSinginupContainer>
       <div>
         <h1>회원가입</h1>
         <AuthForm mode='signup' onSubmit={handleSignup} />
       </div>
-    </div>
+    </loginSinginupContainer>
   );
 }
 

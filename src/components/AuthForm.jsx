@@ -8,7 +8,7 @@ const LoginJoinBox = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #f8f8ff;
-  height: 300px;
+  height: 400px;
   width: 450px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

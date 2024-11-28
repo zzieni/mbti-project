@@ -3,13 +3,7 @@ import { login } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserProvider';
-import styled from 'styled-components';
 import { toast } from 'react-toastify';
-const LoginContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 function Login() {
   const { setUser } = useContext(UserContext);
@@ -28,12 +22,12 @@ function Login() {
   };
 
   return (
-    <LoginContainer>
+    <loginSinginupContainer>
       <div>
         <h1>로그인</h1>
         <AuthForm mode='login' onSubmit={handleLogin} />
       </div>
-    </LoginContainer>
+    </loginSinginupContainer>
   );
 }
 
